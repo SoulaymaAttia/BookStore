@@ -1,20 +1,13 @@
 import { Button, ButtonGroup, Card, CardBody, CardFooter, Divider, Flex, Heading, Image, Stack, Text } from "@chakra-ui/react";
 
-
+import { useShopping } from "../store";
 const  BookCard =({entry}) =>{
     
-    function test(entry) {
-        if (entry && entry.work) {
-          return false;
-        } else {
-          return true;
-        }
-      }
-      
-    const imgUrl = test() ? 'https://covers.openlibrary.org/b/id/'+ entry.work.cover_id+'-M.jpg' : ''
+const {increaseItem} = useShopping();      
+    const imgUrl =  'https://covers.openlibrary.org/b/id/'+ entry.work.cover_id+'-M.jpg' 
     return (
   
-         <Card width={"56"} margin={"5"} boxShadow={"2xl"}>
+         <Card width={"56"} margin={"5"} boxShadow={"2xl"} display={entry.work.title? "block":"none"}>
   <CardBody display={'flex'}  justifyContent={'center'}  alignItems={"center"} flexDir={'column'}>
     <Image
       src={imgUrl}
@@ -23,7 +16,7 @@ const  BookCard =({entry}) =>{
       width={"40"}
     />
     <Stack mt='6' spacing='3'>
-      <Heading size='sm'>{test() ? entry.work.title : 'not available'}</Heading>
+      <Heading size='sm'>{ entry.work.title }</Heading>
       
     </Stack>
   </CardBody>
@@ -31,13 +24,13 @@ const  BookCard =({entry}) =>{
   <CardFooter display={'flex'} justifyContent={"space-between"}>
     
     <ButtonGroup spacing='2'>
-      <Button variant='solid' isDisabled={!test()} colorScheme='pink'>
+      <Button variant='solid'  colorScheme='pink' onClick={increaseItem}>
         Add to cart
       </Button>
     </ButtonGroup>
     <Text color='pink.600' fontSize='xl'>
         {
-            test() ? "10$": "not available"
+        "10$"
         }
       </Text>
   </CardFooter>

@@ -5,4 +5,10 @@ const useShopping = create((set) => ({
   increaseItem: () => set((state) => ({ item: state.item + 1 })),
   removeAllItem: () => set({ item: 0 }),
 }))
-export{useShopping}
+
+const useBuy = create((set) => ({
+  item: 0,
+  setItem: () => set((state) => ({ item: state.item === 0 ? 100 : 0 })),
+}));
+
+export { useShopping,useBuy };
