@@ -1,28 +1,29 @@
 import { Button, Flex, Text } from "@chakra-ui/react"
-import { useBuy, useShopping } from "../store" 
-
+import { useBuy, useShopping } from "../store"
+import { useNavigate } from 'react-router-dom';
 const TotalCard = () => {
-    const h = useBuy().item +  "px"
-    return (
-    <Flex 
-    position={"absolute"} 
-    bgColor={"pink.500"} 
-    width={"200px"} 
-    borderRadius={"xl"} 
-    height={h}
-    overflow={"hidden"} 
-    zIndex={1} 
-    top={"90px"}
-    right={"10px"}
-    justifyContent={"center"}
-    alignItems={"center"}
-    flexDir={"column"}
-    transition={"0.5s"}
+  const navigate = useNavigate();
+  const h = useBuy().item + "px"
+  return (
+    <Flex
+      position={"absolute"}
+      bgColor={"pink.500"}
+      width={"200px"}
+      borderRadius={"xl"}
+      height={h}
+      overflow={"hidden"}
+      zIndex={1}
+      top={"90px"}
+      right={"10px"}
+      justifyContent={"center"}
+      alignItems={"center"}
+      flexDir={"column"}
+      transition={"0.5s"}
 
-    
+
     >
-        <Text textColor={'white'}>your total is : {10*useShopping().item} $</Text>
-        <Button margin={2} onClick={()=>console.log(useBuy.item )} bgColor={"pink.100"} color={"pink.600"} > buy now</Button>
+      <Text textColor={'white'}>your total is : {10 * useShopping().item} $</Text>
+      <Button  margin={2} onClick={() => navigate('/form')} bgColor={"pink.100"} color={"pink.600"} > buy now</Button>
     </Flex>
   )
 }

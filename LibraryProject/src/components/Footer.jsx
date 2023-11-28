@@ -5,6 +5,7 @@ import { BsFacebook, BsInstagram, BsTwitter } from "react-icons/bs";
 export default function Footer() {
   return (
   <Flex
+  
   as="footer"
   bgColor="pink.100"
   p={4}

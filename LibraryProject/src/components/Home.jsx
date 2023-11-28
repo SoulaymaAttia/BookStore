@@ -4,7 +4,7 @@ import BookCard from "./BookCard";
 
 export default function Home() {
     const apiUrl = 'https://openlibrary.org/people/mekBot/books/currently-reading.json'; 
-  const bookData = useBooks(apiUrl);
+    const bookData = useBooks(apiUrl);
   return (
     <Flex  display={"flex"} flexDirection={"row"}  justifyContent={"center"} flexFlow={'wrap'} width={"100%"} padding={"8"}>
         {bookData.map((entry, index) => (
